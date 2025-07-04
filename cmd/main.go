@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"text_processor/internal/processing"
 )
 
 func main() {
@@ -12,12 +14,15 @@ func main() {
 	}
 
 	text := string(inputFile)
-	// proccessed(text)
+	var textTokens []string
+	textTokens = processing.Tokenize(text)
+	result := processing.Process(textTokens)
 
-	err = os.WriteFile(os.Args[2], []byte(text), 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println(result)
+	//err = os.WriteFile(os.Args[2], []byte(text), 0644)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
 
 	//add timer
 }
