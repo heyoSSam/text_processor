@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"text_processor/internal/processing"
 )
 
@@ -16,8 +17,8 @@ func main() {
 	text := string(inputFile)
 	var textTokens []string
 	textTokens = processing.Tokenize(text)
-	result := processing.Process(textTokens)
-
+	result := strings.Join(processing.Process(textTokens), " ")
+	result = processing.FixPunctuation(result)
 	fmt.Println(result)
 	//err = os.WriteFile(os.Args[2], []byte(text), 0644)
 	//if err != nil {
