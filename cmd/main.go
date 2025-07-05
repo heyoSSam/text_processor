@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -19,11 +18,10 @@ func main() {
 	textTokens = processing.Tokenize(text)
 	result := strings.Join(processing.Process(textTokens), " ")
 	result = processing.FixPunctuation(result)
-	fmt.Println(result)
-	//err = os.WriteFile(os.Args[2], []byte(text), 0644)
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
+	err = os.WriteFile(os.Args[2], []byte(result), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	//add timer
 }
